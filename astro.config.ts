@@ -1,0 +1,24 @@
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
+import mdx from '@astrojs/mdx';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
+export default defineConfig({
+  site: 'http://localhost:4321',
+  integrations: [mdx()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+      wrap: true,
+    },
+  },
+});
